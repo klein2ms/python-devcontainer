@@ -23,13 +23,13 @@ The intention behind this project is to create a base development container that
 The easiest way to get started is to download the `/templates/.devcontainer` folder into your current project.
 
 ```sh
-curl https://github.com/klein2ms/python-devcontainer/tar.gz/master | tar -xz --strip=2 python-devcontainer-master/template/.devcontainer
+curl -L https://github.com/klein2ms/python-devcontainer/archive/master.tar.gz | tar -xz --strip=2 python-devcontainer-master/template/.devcontainer
 ```
 
 The templates folder also contains a `launch.json` file which adds a nice <kbd>F5</kbd> keyboard shortcut to run django. You can grab the whole `.vscode` folder using the following.
 
 ```sh
-curl https://github.com/klein2ms/python-devcontainer/tar.gz/master | tar -xz --strip=2 python-devcontainer-master/template/.vscode
+curl -L https://github.com/klein2ms/python-devcontainer/archive/master.tar.gz | tar -xz --strip=2 python-devcontainer-master/template/.vscode
 ```
 
 In VSCode, open the Command Palette <kbd>F1</kbd> and select __Remote-Containers: Reopen in Container__.
