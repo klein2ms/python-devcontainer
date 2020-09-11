@@ -6,6 +6,7 @@ on:
     paths-ignore:
       - .devcontainer
       - .vscode
+      - template
       - .editorconfig
       - .gitattributes
       - .gitignore
