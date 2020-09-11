@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  app:
+    user: vscode
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      target: devcontainer
+      args:
+        VARIANT: 3
+        USER_UID: 1000
+        USER_GID: 1000
+        DEBIAN_DEPS: "tree"
+        NPM_DEPS: "yarn"
+        PIP_DEPS: "pylint pylint-django"
+    volumes:
+      - ..:/workspace:cached
+      - ~/.gitconfig:/root/.gitconfig
+      - ~/.ssh:/home/vscode/.ssh:ro
+      - ~/.ssh:/root/.ssh:ro
+      - /var/run/docker.sock:/var/run/docker-host.sock
