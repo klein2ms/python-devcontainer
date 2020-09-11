@@ -1,0 +1,41 @@
+name: buildx
+
+on:
+  push:
+    branches: [master]
+    paths-ignore:
+      - .devcontainer
+      - .vscode
+      - .editorconfig
+      - .gitattributes
+      - .gitignore
+      - .README.MD
+    schedule:
+      - cron: '0 0 * * 0'
+
+jobs:
+  buildx:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up docker buildx
+        uses: crazy-max/ghaction-docker-buildx@v1
+
+      - name: Login to Dockerhub
+        run: echo {{ secrets.DOCKERHUB_PASSWORD }} | docker login -u klein2ms --password-stdin 2>&1
+
+      - name: Run docker buildx
+        run: |
+          docker buildx build \
+          -f Dockerfile \
+          --target base \
+          --progress plain \
+          --platform linux/amd64 \
+          --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
+          --build-arg VCS_REF=`git rev-parse --short HEAD` \
+          --build-arg VERSION=latest \
+          -t klein2ms/python-devcontainer:latest \
+          --push \
+          .
