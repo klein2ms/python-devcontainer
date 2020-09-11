@@ -5,6 +5,7 @@ on:
     branches: [master]
     paths-ignore:
       - .devcontainer
+      - .github/workflows/dockerhub-description.yml
       - .vscode
       - template
       - .editorconfig
