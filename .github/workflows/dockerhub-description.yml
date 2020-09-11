@@ -17,4 +17,4 @@ jobs:
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-          DOCKERHUB_REPOSITORY: ${{ secrets.DOCKERHUB_USERNAME }}/python-devcontainer
+          DOCKERHUB_REPOSITORY: klein2ms/python-devcontainer
