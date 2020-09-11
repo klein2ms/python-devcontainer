@@ -1,0 +1,10 @@
+
+[package]
+disabled = true
+
+[cmd_duration]
+min_time = 500
+prefix = "took "
+
+[character]
+use_symbol_for_status = true
