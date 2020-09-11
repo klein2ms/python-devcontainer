@@ -1,0 +1,9 @@
+{
+	"recommendations": [
+		// Linters and Formatters
+		"davidanson.vscode-markdownlint",
+		"editorconfig.editorconfig",
+		"mohsen1.prettify-json",
+		"shardulm94.trailing-spaces"
+	]
+}
