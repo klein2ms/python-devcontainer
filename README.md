@@ -17,6 +17,7 @@ The intention behind this project is to create a base development container that
 
 - Access and manage Docker on the Host machine from within the dev container
 - [Starship](https://starship.rs/) is installed as the default shell prompt
+- [GitHub CLI](https://cli.github.com/) is installed
 
 ## Basic Usage
 
