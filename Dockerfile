@@ -19,20 +19,23 @@ LABEL \
 ENV PYTHONUNBUFFERED=1
 
 # Install build tools
-ARG BUILD_DEPS="curl gnupg gnupg2 lsb-release"
+ARG BUILD_DEPS="curl gnupg gnupg2 lsb-release software-properties-common"
 ARG APP_DEPS="build-essential libc-dev libfontconfig1 libpq-dev libssl-dev libxml2 libxml2-dev libxslt1-dev libxslt1.1 libz-dev unixodbc-dev"
 
 RUN set -ex \
     && apt-get update \
     && apt-get install --no-install-recommends -y $BUILD_DEPS \
     && apt-get install --no-install-recommends -y $APP_DEPS \
+    && apt-get update \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists
 
-# Install Starship shell prompt and setup shell
+# Install GitHub CLI and Starship shell prompt and setup shell
 RUN set -ex \
+    && apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0 \
+    && apt-add-repository https://cli.github.com/packages \
     && apt-get update \
-    && apt-get install --no-install-recommends -y fonts-powerline fonts-firacode \
+    && apt-get install --no-install-recommends -y fonts-powerline fonts-firacode gh \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists \
     && curl -s https://api.github.com/repos/starship/starship/releases/latest \
@@ -43,7 +46,9 @@ RUN set -ex \
     && tar xvf starship-*.tar.gz \
     && mv starship /usr/local/bin/ \
     && rm starship-*.tar.gz \
-    && echo 'eval "$(starship init zsh)"' >> /root/.zshrc
+    && echo 'eval "$(starship init zsh)"' >> /root/.zshrc \
+    && gh completion -s zsh > /usr/local/share/zsh/site-functions/_gh \
+    && gh config set editor "code --wait"
 
 COPY ./config/starship.toml /root/.config/
 
