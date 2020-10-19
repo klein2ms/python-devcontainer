@@ -1,10 +1,10 @@
-
 [package]
 disabled = true
 
 [cmd_duration]
 min_time = 500
-prefix = "took "
+format = "took [$duration](bold yellow)"
 
 [character]
-use_symbol_for_status = true
+success_symbol = "[➜](bold green)"
+error_symbol = "[✖](bold red)"
