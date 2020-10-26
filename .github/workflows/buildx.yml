@@ -18,6 +18,9 @@ on:
 jobs:
   buildx:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3, 3.6, 3.7, 3.8, 3.9]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -40,7 +43,8 @@ jobs:
           --platform linux/amd64 \
           --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
           --build-arg VCS_REF=`git rev-parse --short HEAD` \
-          --build-arg VERSION=latest \
-          -t klein2ms/python-devcontainer:latest \
+          --build-arg VERSION=${{ matrix.python-version }} \
+          --build-arg VARIANT=${{ matrix.python-version }}
+          -t klein2ms/python-devcontainer:${{ matrix.python-version }} \
           --push \
           .
