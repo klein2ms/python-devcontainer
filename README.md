@@ -83,7 +83,6 @@ app:
 ## Prior Art and Acknowledgements
 
 - This project is highly influenced by the [godevcontainer](https://github.com/qdm12/godevcontainer) created by @qdm12.
-- Thanks to @crazy-max for the [ghaction-docker-buildx](https://github.com/crazy-max/ghaction-docker-buildx) GitHub build actions
 
 ## License
 
