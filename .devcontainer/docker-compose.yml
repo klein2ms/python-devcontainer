@@ -8,12 +8,12 @@ services:
       dockerfile: Dockerfile
       target: devcontainer
       args:
-        VARIANT: 3
+        VARIANT: 3.8
         USER_UID: 1000
         USER_GID: 1000
         DEBIAN_DEPS: "tree"
         NPM_DEPS: "yarn"
-        PIP_DEPS: "pylint pylint-django"
+        PIP_DEPS: "pylint pylint-django pytest pytest-cov"
     volumes:
       - ..:/workspace:cached
       - ~/.gitconfig:/root/.gitconfig
