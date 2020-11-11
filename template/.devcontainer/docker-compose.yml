@@ -14,7 +14,7 @@ services:
          # add any npm dependencies installed using npm install
         NPM_DEPS: ""
         # add any python dependencies installed using pip3
-        PIP_DEPS: ""
+        PIP_DEPS: "pylint pylint-django pytest pytest-cov"
     # Uncomment the next two lines to expose the app on localhost:8000
     # ports:
     #   - "8000:8000"
